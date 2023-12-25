@@ -7,7 +7,7 @@ export async function createImages(imageDataArray) {
   console.log(parseInt(imageDataArray.album_id[0], 10));
   for (let i = 0; i < imageDataArray.album_id.length; i++) {
     const result = await pool.query(
-      `INSERT INTO images (album_id, image_url )
+      `INSERT INTO painting_images (album_id, image_url )
       VALUES (?, ?)`,
       [parseInt(imageDataArray.album_id[i], 10), imageDataArray.image_url[i]]
     );
@@ -20,7 +20,7 @@ export async function createImages(imageDataArray) {
 export async function getImage(id) {
   const [rows] = await pool.query(
     `SELECT * 
-    FROM images 
+    FROM painting_images 
     WHERE id = ?`,
     [id]
   );
@@ -30,7 +30,7 @@ export async function getImage(id) {
 export async function getAlbumImages(album_id) {
   const [rows] = await pool.query(
     `SELECT * 
-    FROM images 
+    FROM painting_images 
     WHERE album_id = ?`,
     [album_id]
   );
@@ -40,7 +40,7 @@ export async function getAlbumImages(album_id) {
 export async function getImages() {
   const [rows] = await pool.query(
     `SELECT * 
-    FROM images`
+    FROM painting_images`
   );
   return rows;
 }
@@ -72,7 +72,7 @@ export async function updateImage(imageData) {
   }
 
   const updateQuery = `
-    UPDATE images
+    UPDATE painting_images
     SET ${updateFields.join(", ")}
     WHERE id = ?
   `;
@@ -83,11 +83,13 @@ export async function updateImage(imageData) {
 }
 
 export async function deleteImage(image_id) {
-  await pool.query(`DELETE FROM images WHERE id = ?`, [image_id]);
+  await pool.query(`DELETE FROM painting_images WHERE id = ?`, [image_id]);
 }
 
 export async function deleteAlbumImages(album_id) {
-  await pool.query(`DELETE FROM images WHERE album_id = ?`, [album_id]);
+  await pool.query(`DELETE FROM painting_images WHERE album_id = ?`, [
+    album_id,
+  ]);
 }
 
 // Add other image-related functions as needed

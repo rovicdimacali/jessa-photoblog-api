@@ -1,7 +1,8 @@
 // src/app.js
 import express from "express";
 import albumRoutes from "./routes/albumRoutes.js";
-import imageRoutes from "./routes/imageRoutes.js";
+import paintingRoutes from "./routes/paintingRoutes.js";
+import paintingImagesRoutes from "./routes/paintingImagesRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import { multerMiddleware } from "./middlewares/multerMiddleware.js";
 
@@ -13,7 +14,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api", albumRoutes);
-app.use("/api", imageRoutes);
+app.use("/api", paintingRoutes);
+app.use("/api", paintingImagesRoutes);
 app.use("/api", authRoutes);
 
 // Error handling middleware
