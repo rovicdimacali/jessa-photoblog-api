@@ -18,7 +18,7 @@ export const authenticateToken = (req, res, next) => {
 
   jwt.verify(
     token,
-    "N18DZOBbg8Y54JDw73Q/uXI5BvsAjXUxhxd8+4+ZwoQ=",
+    process.env.JWT_SECRET_KEY,
     { algorithms: ["HS256"] },
     (err, decoded) => {
       if (err) {

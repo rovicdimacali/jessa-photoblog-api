@@ -55,7 +55,7 @@ export const loginController = async (req, res) => {
     // Create and send JWT token
     const token = jwt.sign(
       { userId: user.id, username },
-      "N18DZOBbg8Y54JDw73Q/uXI5BvsAjXUxhxd8+4+ZwoQ=",
+      process.env.JWT_SECRET_KEY,
       {
         expiresIn: "1h", // Set an appropriate expiration time
       }
