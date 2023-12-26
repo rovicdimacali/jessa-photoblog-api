@@ -13,11 +13,7 @@ router.post(
   authenticateToken,
   paintingImageControllers.createImageController
 );
-router.get(
-  "/painting-images",
-  authenticateToken,
-  paintingImageControllers.getImagesController
-);
+router.get("/painting-images", paintingImageControllers.getImagesController);
 router.put(
   "/painting-images/:id",
   authenticateToken,

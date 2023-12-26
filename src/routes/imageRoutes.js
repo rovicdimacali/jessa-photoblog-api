@@ -13,7 +13,7 @@ router.post(
   authenticateToken,
   imageController.createImageController
 );
-router.get("/images", authenticateToken, imageController.getImagesController);
+router.get("/images", imageController.getImagesController);
 router.put(
   "/images/:id",
   authenticateToken,

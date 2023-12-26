@@ -8,11 +8,7 @@ const router = express.Router();
 router.use(morgan("combined"));
 
 // Correct usage of post route
-router.get(
-  "/paintings",
-  authenticateToken,
-  paintingControllers.getAlbumsController
-);
+router.get("/paintings", paintingControllers.getAlbumsController);
 router.post(
   "/paintings",
   authenticateToken,

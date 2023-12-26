@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(morgan("combined"));
 
 // Correct usage of post route
-router.get("/albums", authenticateToken, albumController.getAlbumsController);
+router.get("/albums", albumController.getAlbumsController);
 router.post(
   "/albums",
   authenticateToken,
