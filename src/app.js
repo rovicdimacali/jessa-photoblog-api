@@ -1,5 +1,6 @@
 // src/app.js
 import express from "express";
+import cors from "cors";
 import albumRoutes from "./routes/albumRoutes.js";
 import paintingRoutes from "./routes/paintingRoutes.js";
 import paintingImagesRoutes from "./routes/paintingImagesRoutes.js";
@@ -9,6 +10,7 @@ import { multerMiddleware } from "./middlewares/multerMiddleware.js";
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+app.use(cors());
 app.use(multerMiddleware);
 app.use(express.json());
 
