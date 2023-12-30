@@ -57,7 +57,7 @@ export const loginController = async (req, res) => {
       { userId: user.id, username },
       process.env.JWT_SECRET_KEY,
       {
-        expiresIn: "1h", // Set an appropriate expiration time
+        expiresIn: "1d", // Set an appropriate expiration time
       }
     );
 
