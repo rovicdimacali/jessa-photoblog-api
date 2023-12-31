@@ -4,12 +4,13 @@ import pool from "../config/database.js";
 export async function createImages(imageDataArray) {
   const insertIds = [];
 
-  console.log(parseInt(imageDataArray.album_id[0], 10));
-  for (let i = 0; i < imageDataArray.album_id.length; i++) {
+  console.log(imageDataArray);
+  for (let i = 0; i < imageDataArray.length; i++) {
+    const image = imageDataArray[i]; // Access the current image object
     const result = await pool.query(
-      `INSERT INTO painting_images (album_id, image_url )
-      VALUES (?, ?)`,
-      [parseInt(imageDataArray.album_id[i], 10), imageDataArray.image_url[i]]
+      `INSERT INTO painting_images (album_id, image_name, description, image_url )
+        VALUES (?, ?, ?, ?)`,
+      [image.album_id, image.image_name, image.description, image.image_url]
     );
     insertIds.push(result.insertId);
   }
