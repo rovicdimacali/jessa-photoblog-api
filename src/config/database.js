@@ -14,4 +14,13 @@ const pool = mysql
   })
   .promise();
 
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error("Error connecting to the database:", err.message);
+  } else {
+    console.log("Connected to the database!");
+    connection.release(); // Release the connection back to the pool
+  }
+});
+
 export default pool;
